@@ -33,7 +33,7 @@ tracer = Tracer()
 #
 # methods of interest
 #
-tracer.set_trace_methods(['method1', 'method2'])
+tracer.set_trace_methods(['method1', 'method3'])
 tracer.start()
 
 #
