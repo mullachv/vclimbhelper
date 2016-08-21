@@ -1,16 +1,20 @@
 Aug 21, 2016
-=============
 Version: 0.01
 
-Install the following packages:
-pip: http://pypi.python.org/pypi/pip
-distribute: http://pypi.python.org/pypi/distribute
-nose: http://pypi.python.org/pypi/nose/
-virtualenv: http://pypi.python.org/pypi/virtualenv
+Code tested in Python 2.7.10
 
-Run as $nosetests -s
-All tests must pass.
-Expected last few lines of output:
+Install the following Python packages:
+[pip] (http://pypi.python.org/pypi/pip)
+[distribute] (http://pypi.python.org/pypi/distribute)
+[nose] (http://pypi.python.org/pypi/nose/)
+[virtualenv] (http://pypi.python.org/pypi/virtualenv)
+
+Run as 
+```
+$ nosetests -s
+```
+
+All tests must pass. Expected last few lines of output
 ```
 ----------------------------------------------------------------------
 Ran 5 tests in 0.005s
@@ -18,7 +22,7 @@ Ran 5 tests in 0.005s
 OK
 ```
 
-Sample usage:
+Sample usage
 --------------
 ```python
 tracer = Tracer()
@@ -49,9 +53,9 @@ tracer.reset()
 ```
 
 
-Sample Output (using printStats()):
+Sample Output (using printStats())
 ------------------------------------
-
+```
 ### Called Methods ###
 {'func_name': 'method1', 'func_filename': '/Users/vmullachery/mine/NYU/summer2016/IndStudy/lpthw/vclimbhelper-oo/tests/calltrace_tests.py', 'func_line_no': 15}
 {'func_name': 'method3', 'func_filename': '/Users/vmullachery/mine/NYU/summer2016/IndStudy/lpthw/vclimbhelper-oo/tests/calltrace_tests.py', 'func_line_no': 21}
@@ -61,3 +65,4 @@ Sample Output (using printStats()):
 ### Method Exceptions ###
 {'func_name': 'method3', 'exception_name': 'RuntimeError', 'exception_value': RuntimeError('Error raised in method3',), 'func_line_no': 22}
 
+```
