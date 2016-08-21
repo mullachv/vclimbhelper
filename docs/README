@@ -8,31 +8,56 @@ distribute: http://pypi.python.org/pypi/distribute
 nose: http://pypi.python.org/pypi/nose/
 virtualenv: http://pypi.python.org/pypi/virtualenv
 
-Run nosetests -s
-Three tests must run and none fail
-Main file is tracer.py. trace_calls_and_returns method captures the call trace
-and return values into two global variables. Use the get*iterator methods
-to loop through the results
+Run as $nosetests -s
+All tests must pass.
+Expected last few lines of output:
+```
+----------------------------------------------------------------------
+Ran 5 tests in 0.005s
 
-One can use the trace_calls_and_returns simply by including it in one's code,
-for instance, as in calltrace_tests.py file. An example:
+OK
+```
 
-<code>
-from calltrace import tracer
-sys.settrace(tracer.trace_calls_and_returns)
+Sample usage:
+--------------
+```python
+tracer = Tracer()
+#
+# methods of interest
+#
+tracer.set_trace_methods(['method1', 'method2'])
+tracer.start()
 
-#Call your target method(s)
-method2()
+#
+# Now, call the target method(s) of interest
+#
 
-#Now simply iterate through the gathered call list or
-#result list for what you need to check/verify
-for item in tracer.get_calllist_iterator():
-    if item[0] == 'method2':
-        #method2() is at line 18 of this file
-        assert_equal(18, item[1])
-        #method2() is called from line 41 in this file
-        assert_equal(41, item[3])
-        break
+method1()
+method3()
 
+# Then (optionally) call one or more of these:
+#   get_calllist_iterator
+#   get_returnlist_iterator
+#   get_exceptionlist_iterator
+#
+
+# Optionally print using tracer.printStats()
+tracer.printStats()
+
+# Finally, reset 
 tracer.reset()
-</code>
+```
+
+
+Sample Output (using printStats()):
+------------------------------------
+
+### Called Methods ###
+{'func_name': 'method1', 'func_filename': '/Users/vmullachery/mine/NYU/summer2016/IndStudy/lpthw/vclimbhelper-oo/tests/calltrace_tests.py', 'func_line_no': 15}
+{'func_name': 'method3', 'func_filename': '/Users/vmullachery/mine/NYU/summer2016/IndStudy/lpthw/vclimbhelper-oo/tests/calltrace_tests.py', 'func_line_no': 21}
+### Method Return Values ###
+{'func_name': 'method1', 'return_value': 'Hello, World!'}
+{'func_name': 'method3', 'return_value': None}
+### Method Exceptions ###
+{'func_name': 'method3', 'exception_name': 'RuntimeError', 'exception_value': RuntimeError('Error raised in method3',), 'func_line_no': 22}
+
