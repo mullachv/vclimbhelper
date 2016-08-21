@@ -12,7 +12,8 @@ Install the following Python packages:
 * [nose] (http://pypi.python.org/pypi/nose/)
 * [virtualenv] (http://pypi.python.org/pypi/virtualenv)
 
-Run as 
+Run
+-----
 ```
 $ nosetests -s
 ```
@@ -69,3 +70,17 @@ Sample Output (using printStats())
 {'func_name': 'method3', 'exception_name': 'RuntimeError', 'exception_value': RuntimeError('Error raised in method3',), 'func_line_no': 22}
 
 ```
+
+Output interpretation
+-----------------------
+1. Called methods
+  * method1 on line 15 of specified file called
+  * method3 on line 21 of specified file called
+
+2. Return Values
+  * method1 returned 'Hello, World!'
+  * method3 returned None (no return statement)
+
+3. Exceptions
+  * method3 threw a RuntimeError with the message string 'Error raised in method3' on line 22
+
