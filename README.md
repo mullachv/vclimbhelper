@@ -4,7 +4,7 @@ Installation
 Aug 21, 2016
 Version: 0.01
 
-Code tested in Python 2.7.10
+Code tested using Python 2.7.10
 
 Install the following Python packages:
 * [pip] (http://pypi.python.org/pypi/pip)
